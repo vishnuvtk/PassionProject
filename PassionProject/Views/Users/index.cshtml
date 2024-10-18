@@ -1,0 +1,39 @@
+﻿@model IEnumerable<PassionProject.Models.User>
+
+@{
+    ViewData["Title"] = "Users List";
+}
+
+<h2>Users List</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>User ID</th>
+            <th>Full Name</th>
+            <th>Email</th>
+            <th>Address</th>
+            <th>User Name</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var user in Model)
+        {
+            <tr>
+                <td>@user.UserId</td>
+                <td>@user.FullName</td>
+                <td>@user.Email</td>
+                <td>@user.Address</td>
+                <td>@user.UserName</td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@user.UserId" class="btn btn-primary">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@user.UserId" class="btn btn-info">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@user.UserId" class="btn btn-danger">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<a asp-action="Create" class="btn btn-primary">Create New User</a>
